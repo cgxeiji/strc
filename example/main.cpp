@@ -24,7 +24,7 @@ int main() {
     auto hello_world = hello + world;
     output("'hello ' + 'world'", hello_world.id());
 
-    std::cout << "Any UTF-8 characters is supported: " << std::endl;
+    std::cout << "Any UTF-8 character is supported: " << std::endl;
     auto japanese = "日本語でも出来ます！"_strc;
     output("'日本語でも出来ます！'", japanese.id());
 
