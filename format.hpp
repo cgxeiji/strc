@@ -69,6 +69,11 @@ constexpr auto format(TStrc, Args... args) noexcept {
     std::array<std::uint8_t,
                strc_tools::size_of<Args...>::value + TStrc::id_size>
         arr = {};
+    if (sizeof...(Args) == 0) {
+        auto id = get_strc_id<TStrc>();
+        std::memcpy(arr.data(), &id, TStrc::id_size);
+        return arr;
+    }
     auto id = get_fmt_strc_id<TStrc, Args...>();
     std::memcpy(arr.data(), &id, TStrc::id_size);
 
