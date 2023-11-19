@@ -1,19 +1,19 @@
 #include "../strc.hpp"
 
 template</*
-    Hello 
+    hello 
 */>
-cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 72, 101, 108, 108, 111, 32>>() { return 0; }
+cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 104, 101, 108, 108, 111, 32>>() { return 0; }
 
 template</*
-    World
+    world
 */>
-cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 87, 111, 114, 108, 100>>() { return 1; }
+cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 119, 111, 114, 108, 100>>() { return 1; }
 
 template</*
-    Hello World
+    hello world
 */>
-cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100>>() { return 2; }
+cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100>>() { return 2; }
 
 template</*
     日本語でも出来ます！
@@ -21,9 +21,9 @@ template</*
 cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 230, 151, 165, 230, 156, 172, 232, 170, 158, 227, 129, 167, 227, 130, 130, 229, 135, 186, 230, 157, 165, 227, 129, 190, 227, 129, 153, 239, 188, 129>>() { return 3; }
 
 template</*
-    H
+    h
 */>
-cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 72>>() { return 4; }
+cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 104>>() { return 4; }
 
 template</*
     e

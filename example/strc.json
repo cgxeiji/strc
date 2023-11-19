@@ -1,20 +1,20 @@
 [
     {
         "id": 0,
-        "string": "Hello ",
-        "cpp": "template</*\n    Hello \n*/>\ncgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 72, 101, 108, 108, 111, 32>>() { return 0; }",
+        "string": "hello ",
+        "cpp": "template</*\n    hello \n*/>\ncgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 104, 101, 108, 108, 111, 32>>() { return 0; }",
         "variable_types": []
     },
     {
         "id": 1,
-        "string": "World",
-        "cpp": "template</*\n    World\n*/>\ncgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 87, 111, 114, 108, 100>>() { return 1; }",
+        "string": "world",
+        "cpp": "template</*\n    world\n*/>\ncgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 119, 111, 114, 108, 100>>() { return 1; }",
         "variable_types": []
     },
     {
         "id": 2,
-        "string": "Hello World",
-        "cpp": "template</*\n    Hello World\n*/>\ncgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100>>() { return 2; }",
+        "string": "hello world",
+        "cpp": "template</*\n    hello world\n*/>\ncgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100>>() { return 2; }",
         "variable_types": []
     },
     {
@@ -25,8 +25,8 @@
     },
     {
         "id": 4,
-        "string": "H",
-        "cpp": "template</*\n    H\n*/>\ncgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 72>>() { return 4; }",
+        "string": "h",
+        "cpp": "template</*\n    h\n*/>\ncgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 104>>() { return 4; }",
         "variable_types": []
     },
     {
