@@ -1,4 +1,5 @@
 #include "../strc.hpp"
+#include "../format.hpp"
 
 template</*
     hello 
@@ -34,4 +35,14 @@ template</*
     /main.cpp
 */>
 cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 47, 109, 97, 105, 110, 46, 99, 112, 112>>() { return 6; }
+
+template</*
+    int: %d, char: %d, float: %f, double: %f, short: %d, long: %d
+*/>
+cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 105, 110, 116, 58, 32, 37, 100, 44, 32, 99, 104, 97, 114, 58, 32, 37, 100, 44, 32, 102, 108, 111, 97, 116, 58, 32, 37, 102, 44, 32, 100, 111, 117, 98, 108, 101, 58, 32, 37, 102, 44, 32, 115, 104, 111, 114, 116, 58, 32, 37, 100, 44, 32, 108, 111, 110, 103, 58, 32, 37, 100>>() { return 7; }
+
+template</*
+    int: %d, char: %d, float: %f, double: %f, short: %d, long: %d
+*/>
+cgx::strc_id_t cgx::get_fmt_strc_id<cgx::strc<char, 105, 110, 116, 58, 32, 37, 100, 44, 32, 99, 104, 97, 114, 58, 32, 37, 100, 44, 32, 102, 108, 111, 97, 116, 58, 32, 37, 102, 44, 32, 100, 111, 117, 98, 108, 101, 58, 32, 37, 102, 44, 32, 115, 104, 111, 114, 116, 58, 32, 37, 100, 44, 32, 108, 111, 110, 103, 58, 32, 37, 100>, int, char, float, double, unsigned short, int>() { return 7; }
 
