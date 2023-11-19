@@ -32,9 +32,12 @@ Make sure to add `strc.cpp` into your target sources (this file is generated aut
 
 ## How does it work?
 
-This library exploits how a user-defined literal behaves when using it with string literals. When using templates, it is possible to unpack each character into a template parameter. Then, an external script gets the signature of each definet literal, and creates a unique id, which is dumped into `strc.cpp`. The project is recompiled with this new source and a link is established between the unique identifier and the string literal.
+This library exploits how a user-defined literal behaves when using it with string literals. When using templates, it is possible to unpack each character into a template parameter. Then, an external script gets the signature of each defined literal, and creates a unique id, which is dumped into `strc.cpp`. The project is recompiled with this new source and a link is established between the unique identifier and the string literal. Because everything happens at compile time, there is no runtime cost and assertions can be made statically when compiling.
 
 ```cpp
 auto world = "world"_strc;
-static_assert(std::is_same<decltype(world), cgx::strc<char, 'w', 'o', 'r', 'l', 'd'>>::value, "same type");
+static_assert(std::is_same<
+    decltype(world),
+    cgx::strc<char, 'w', 'o', 'r', 'l', 'd'>
+  >::value, "same type");
 ```
