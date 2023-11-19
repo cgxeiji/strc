@@ -3,59 +3,14 @@ import os
 import json
 import argparse
 
-class VarType:
-    def __init__(self, type, modifiers):
-        self.type = type
-        self.modifiers = modifiers
-
-    def __str__(self):
-        return "type: {}, modifiers: {}".format(self.type, self.modifiers)
-
-    def __repr__(self):
-        return self.type
-
-    def __eq__(self, other):
-        return self.type == other.type
-
-    def __hash__(self):
-        return hash
-
 class StringConstant:
     def __init__(self, id, string, cpp):
         self.id = id
         self.string = string
         self.cpp = cpp
-        self.variable_types = []
-        self.parse()
-
-    def var_size(self):
-        return len(self.variable_types)
-
-    def parse(self):
-        # find any instance of %.*? and add its corresponding type to
-        # variable_types
-        a = self.string.split("%")
-        for i in range(1, len(a)):
-            # if the first character is a letter, create a VarType object with
-            # the letter as type and add it to variable_types
-            if a[i][0].isalpha():
-                self.variable_types.append(VarType(a[i][0], ""))
-                continue
-
-            # otherwise, save the type and modifiers
-            idx = 0
-            for j in range(1, len(a[i])):
-                if a[i][j].isalpha():
-                    idx = j
-                    break
-
-            if idx == 0:
-                continue
-
-            self.variable_types.append(VarType(a[i][idx], a[i][0:idx]))
 
     def __str__(self):
-        return "id: {}, string: {}, cpp: {}, variable_types: {}".format(self.id, self.string, self.cpp, self.variable_types)
+        return "id: {}, string: {}, cpp: {}".format(self.id, self.string, self.cpp)
 
     def __repr__(self):
         return self.string

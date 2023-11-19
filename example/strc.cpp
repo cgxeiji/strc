@@ -31,7 +31,7 @@ template</*
 cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 101>>() { return 5; }
 
 template</*
-    /home/cgx/repos/strc/example/main.cpp
+    /main.cpp
 */>
-cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 47, 104, 111, 109, 101, 47, 99, 103, 120, 47, 114, 101, 112, 111, 115, 47, 115, 116, 114, 99, 47, 101, 120, 97, 109, 112, 108, 101, 47, 109, 97, 105, 110, 46, 99, 112, 112>>() { return 6; }
+cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 47, 109, 97, 105, 110, 46, 99, 112, 112>>() { return 6; }
 
