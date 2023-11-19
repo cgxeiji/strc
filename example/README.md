@@ -9,7 +9,7 @@ $ cmake ..
 
 Return to the root directory and run:
 ```
-$ python3 ../tools/make_strc.py "../strc.hpp"
+$ python3 ../tools/make_strc.py --lib-path=".."
 ```
 
 

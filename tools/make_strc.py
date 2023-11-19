@@ -248,7 +248,7 @@ def post_make():
 def main():
     # get the path to the library from the arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("lib_path", help="path to the strc library")
+    parser.add_argument("--lib-path", help="path to the strc library")
     args = parser.parse_args()
     lib_path = args.lib_path
 
