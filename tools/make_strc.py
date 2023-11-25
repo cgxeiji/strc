@@ -177,14 +177,15 @@ def parse_format_string(output, string_constants):
         print("    {}".format(to_strings[i]))
 
     # append the variables into the string_constant
-    print("appending variables...")
+    print("creating format definitions...")
     for i in range(len(strc)):
         # find the string_constant with the same string
         for string_constant in string_constants:
             if string_constant.string != to_strings[i]:
                 continue
             # append the variable types
-            for var_type in variables[i]:
+            for j in range(len(variables[i])):
+                var_type = variables[i][j]
                 size = 0;
                 # get the size of the variable
                 if "char" in var_type:
@@ -206,19 +207,17 @@ def parse_format_string(output, string_constants):
                 string_constant.variable_types.append(VarType(var_type, size))
             # reshape each line into:
             # strc_id_t get_fmt_strc_id(strc<...>) { return ...; }
-            print("creating definitions:")
-            for i in range(len(strc)):
-                string_constant.cpp += "\n\ntemplate</*\n    {}\n*/>\ncgx::strc_id_t cgx::get_fmt_strc_id<cgx::strc<{}>, {}>() {{ return {}; }}".format(to_strings[i], strc[i], variables[i], string_constant.id)
+            string_constant.cpp += "\n\ntemplate</*\n    {}\n*/>\ncgx::strc_id_t cgx::get_fmt_strc_id<cgx::strc<{}>, {}>() {{ return {}; }}".format(to_strings[i], strc[i], variables[i], string_constant.id)
 
-                # delete '
-                string_constant.cpp = string_constant.cpp.replace("'", "")
-                # delete [ and ]
-                string_constant.cpp = string_constant.cpp.replace("[", "")
-                string_constant.cpp = string_constant.cpp.replace("]", "")
-            print("done")
+            # delete '
+            string_constant.cpp = string_constant.cpp.replace("'", "")
+            # delete [ and ]
+            string_constant.cpp = string_constant.cpp.replace("[", "")
+            string_constant.cpp = string_constant.cpp.replace("]", "")
 
             break
 
+    print("done")
     return string_constants
 
 

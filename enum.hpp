@@ -143,10 +143,16 @@ static auto get_enum_str_indices() {
 
 template <typename TEnum>
 static auto get_enum_strc_id(TEnum value) -> strc_id_t {
+    static_assert(std::is_enum<TEnum>::value, "TEnum must be an enum");
     static auto indices = get_enum_str_indices<TEnum>();
     auto idx = static_cast<std::size_t>(value);
 
     return indices[idx];
+}
+
+template <typename TEnum>
+inline auto enum_arg(TEnum value) -> strc_id_t {
+    return get_enum_strc_id(value);
 }
 
 }  // namespace cgx
