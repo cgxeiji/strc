@@ -80,7 +80,7 @@ constexpr auto concat_enum_name(std::integer_sequence<Int, Ints...>) {
 }
 
 template <typename TEnum, TEnum Value>
-constexpr auto enum_strc() {
+constexpr auto make_enum_strc() {
     constexpr auto fn_name = __PRETTY_FUNCTION__;
     constexpr auto len = std::strlen(fn_name);
     constexpr auto idx = find_enum_value_idx(fn_name);
@@ -91,9 +91,62 @@ constexpr auto enum_strc() {
     return concat_enum_name<TEnum, Value>(idxs);
 }
 
-template <typename TEnum, TEnum Value>
-constexpr auto make_enum_strc() {
-    return enum_strc<TEnum, Value>();
+template <typename TEnum, typename Int, Int... Ints>
+constexpr auto make_enum_strc(std::integer_sequence<Int, Ints...>) {
+    return std::make_tuple(
+        make_enum_strc<TEnum, static_cast<TEnum>(Ints)>()...);
+}
+
+template <typename TEnum>
+struct enum_strc {
+    static_assert(std::is_enum<TEnum>::value, "TEnum must be an enum");
+    static constexpr auto size = size_of<TEnum>();
+    static_assert(size > 0, "size > 0");
+
+    static constexpr auto values = make_enum_strc<TEnum>(
+        std::make_integer_sequence<int, static_cast<int>(size)>{});
+};
+
+template <typename TEnum, typename TIndicesArray, typename Int>
+static auto concat_enum_indices(TIndicesArray arr) {
+    return arr;
+}
+
+template <typename TEnum, typename TIndicesArray, typename Int, Int First,
+          Int... Ints>
+static auto concat_enum_indices(TIndicesArray arr) {
+    constexpr auto enums = enum_strc<TEnum>::values;
+    arr[First] = get_strc_id(std::get<First>(enums));
+    arr = concat_enum_indices<TEnum, TIndicesArray, Int, Ints...>(arr);
+    return arr;
+}
+
+template <typename TEnum, typename TIndicesArray, typename Int, Int... Ints>
+static auto get_enum_str_indices(TIndicesArray arr,
+                                 std::integer_sequence<Int, Ints...>) {
+    arr = concat_enum_indices<TEnum, TIndicesArray, Int, Ints...>(arr);
+    return arr;
+}
+
+template <typename TEnum>
+static auto get_enum_str_indices() {
+    constexpr auto size = size_of<TEnum>();
+    constexpr auto idxs =
+        std::make_integer_sequence<std::size_t,
+                                   static_cast<std::size_t>(size)>{};
+
+    std::array<strc_id_t, size> indices{};
+    indices = get_enum_str_indices<TEnum>(indices, idxs);
+
+    return indices;
+}
+
+template <typename TEnum>
+static auto get_enum_strc_id(TEnum value) -> strc_id_t {
+    static auto indices = get_enum_str_indices<TEnum>();
+    auto idx = static_cast<std::size_t>(value);
+
+    return indices[idx];
 }
 
 }  // namespace cgx
