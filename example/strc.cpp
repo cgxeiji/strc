@@ -46,3 +46,18 @@ template</*
 */>
 cgx::strc_id_t cgx::get_fmt_strc_id<cgx::strc<char, 105, 110, 116, 58, 32, 37, 100, 44, 32, 99, 104, 97, 114, 58, 32, 37, 100, 44, 32, 102, 108, 111, 97, 116, 58, 32, 37, 102, 44, 32, 100, 111, 117, 98, 108, 101, 58, 32, 37, 102, 44, 32, 115, 104, 111, 114, 116, 58, 32, 37, 100, 44, 32, 108, 111, 110, 103, 58, 32, 37, 100>, int, char, float, double, unsigned short, int>() { return 7; }
 
+template</*
+    Enumerator: %d
+*/>
+cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 69, 110, 117, 109, 101, 114, 97, 116, 111, 114, 58, 32, 37, 100>>() { return 8; }
+
+template</*
+    Enumerator: %d
+*/>
+cgx::strc_id_t cgx::get_fmt_strc_id<cgx::strc<char, 69, 110, 117, 109, 101, 114, 97, 116, 111, 114, 58, 32, 37, 100>, unsigned int>() { return 8; }
+
+template</*
+    Enumerator::ItCanBeVerbose
+*/>
+cgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 69, 110, 117, 109, 101, 114, 97, 116, 111, 114, 58, 58, 73, 116, 67, 97, 110, 66, 101, 86, 101, 114, 98, 111, 115, 101>>() { return 9; }
+

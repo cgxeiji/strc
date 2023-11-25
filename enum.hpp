@@ -51,8 +51,9 @@ constexpr auto size_of() {
 
 template <typename TStr>
 constexpr auto find_enum_value_idx(TStr value) {
-    auto i = std::strlen(value);
-    for (; i >= 0; i--) {
+    auto len = std::strlen(value);
+    std::size_t i = 0;
+    for (i = 0; i < len; i++) {
         if (value[i] == 'V') {
             break;
         }
@@ -84,9 +85,10 @@ constexpr auto make_enum_strc() {
     constexpr auto fn_name = __PRETTY_FUNCTION__;
     constexpr auto len = std::strlen(fn_name);
     constexpr auto idx = find_enum_value_idx(fn_name);
+    constexpr auto enum_size = len - idx - 1;
     constexpr auto idxs =
         std::make_integer_sequence<std::size_t,
-                                   static_cast<std::size_t>(len - idx - 1)>{};
+                                   static_cast<std::size_t>(enum_size)>{};
 
     return concat_enum_name<TEnum, Value>(idxs);
 }

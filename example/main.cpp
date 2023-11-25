@@ -1,11 +1,14 @@
 #include <iostream>
 
-#include "../format.hpp"
 #include "../strc.hpp"
 
 void output(const char* str, std::uint64_t id) {
     std::cout << str << ": " << std::hex << id << std::endl;
 }
+
+enum class Enumerator {
+    ItCanBeVerbose,
+};
 
 int main() {
     output("current size of strc", sizeof(cgx::strc_id_t));
@@ -71,6 +74,14 @@ int main() {
     std::cout << "double: " << sizeof(double) << std::endl;
     std::cout << "short: " << sizeof(uint16_t) << std::endl;
     std::cout << "long: " << sizeof(uint32_t) << std::endl;
+
+    std::cout << "We can also use it with enums: " << std::endl;
+    auto enumerator = Enumerator::ItCanBeVerbose;
+    auto enum_data = cgx::format("Enumerator: %d"_strc, cgx::enum_arg(enumerator));
+    for (auto& i : enum_data) {
+        std::cout << std::hex << static_cast<int>(i) << " ";
+    }
+    std::cout << std::endl;
 
     return 0;
 }

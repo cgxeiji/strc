@@ -71,5 +71,22 @@
                 "size": 4
             }
         ]
+    },
+    {
+        "id": 8,
+        "string": "Enumerator: %d",
+        "cpp": "template</*\n    Enumerator: %d\n*/>\ncgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 69, 110, 117, 109, 101, 114, 97, 116, 111, 114, 58, 32, 37, 100>>() { return 8; }\n\ntemplate</*\n    Enumerator: %d\n*/>\ncgx::strc_id_t cgx::get_fmt_strc_id<cgx::strc<char, 69, 110, 117, 109, 101, 114, 97, 116, 111, 114, 58, 32, 37, 100>, unsigned int>() { return 8; }",
+        "variable_types": [
+            {
+                "type": "unsigned int",
+                "size": 4
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "string": "Enumerator::ItCanBeVerbose",
+        "cpp": "template</*\n    Enumerator::ItCanBeVerbose\n*/>\ncgx::strc_id_t cgx::get_strc_id<cgx::strc<char, 69, 110, 117, 109, 101, 114, 97, 116, 111, 114, 58, 58, 73, 116, 67, 97, 110, 66, 101, 86, 101, 114, 98, 111, 115, 101>>() { return 9; }",
+        "variable_types": []
     }
 ]
