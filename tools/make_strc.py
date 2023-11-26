@@ -223,9 +223,9 @@ def parse_format_string(output, string_constants):
 
 # make_json takes an array of StringConstant objects and creates a json file
 # with the given name
-def make_json(filename, string_constants):
+def make_json(filename, content):
     print("Creating file: {}".format(filename))
-    encoded = json.dumps(string_constants, default=lambda o: o.__dict__, indent=4)
+    encoded = json.dumps(content, default=lambda o: o.__dict__, indent=4)
     with open(filename, "w") as file:
         file.write(encoded)
 
@@ -247,7 +247,8 @@ def post_make():
 def main():
     # get the path to the library from the arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("--lib-path", help="path to the strc library")
+    parser.add_argument("-l", "--lib-path", help="path to the strc library")
+    parser.add_argument("-s", "--byte-size", help="size of the strc_id_t type", default=4, type=int)
     args = parser.parse_args()
     lib_path = args.lib_path
 
@@ -261,7 +262,11 @@ def main():
     string_constants = parse_string_constant(output)
     string_constants = parse_format_string(output, string_constants)
 
-    make_json("strc.json", string_constants)
+    content = {}
+    content["string_constants"] = string_constants
+    content["strc_id_size"] = args.byte_size
+
+    make_json("strc.json", content)
     make_file("strc.cpp", string_constants, lib_path)
     post_make()
         

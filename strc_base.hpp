@@ -6,7 +6,7 @@
 namespace cgx {
 
 #ifdef CGX_STRC_8BIT
-using strc_id_t = char;
+using strc_id_t = unsigned char;
 #elif defined(CGX_STRC_16BIT)
 using strc_id_t = unsigned short;
 #elif defined(CGX_STRC_32BIT)
